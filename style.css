@@ -671,3 +671,9 @@ body { line-height: 1.5; }
 .tool[data-i="3"] .out { rotate: -2.5deg; }
 .tool[data-i="4"] .out { rotate: 2deg; }
 .tool[data-i="1"] .out { rotate: 1deg; }
+
+/* Phones: a wider slot for the pulled-out tool, so small tools read and long ones stay on screen */
+@media (max-width: 640px) {
+  .tshow { grid-template-columns: 92px minmax(0, 1fr); gap: 14px; }
+  .slot { height: 170px; }
+}

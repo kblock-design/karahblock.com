@@ -26,12 +26,16 @@ document.documentElement.classList.add('js');
     var noMove = matchMedia('(prefers-reduced-motion: reduce)').matches;
     tools.forEach(function (b) { b.style.transition = noMove ? 'none' : ''; });
     place();
-    /* Only scroll if the box and the details are not both on screen already. */
+    /* Only scroll if the box and the details are not both on screen already. On phones the tool
+       names sit above the box, so keep them in view too, so a reader can switch tools without scrolling back. */
     if (cur !== null) {
-      var st = document.getElementById('stage').getBoundingClientRect(), ds = document.querySelector('.tshow').getBoundingClientRect();
-      if (st.top < 60 || ds.bottom > innerHeight) {
-        var y = scrollY + Math.min(st.top, ds.top) - 70, roomy = Math.max(st.bottom, ds.bottom) - Math.min(st.top, ds.top) + 70 <= innerHeight;
-        scrollTo({ top: roomy ? y : scrollY + ds.bottom - innerHeight + 12, behavior: noMove ? 'auto' : 'smooth' });
+      var st = document.getElementById('stage').getBoundingClientRect(), ds = document.querySelector('.tshow').getBoundingClientRect(),
+          nm = document.querySelector('.names').getBoundingClientRect(), navH = 64;
+      var top = nm.bottom <= st.top ? nm.top : st.top;
+      if (top < navH || ds.bottom > innerHeight) {
+        var fits = ds.bottom - top + navH + 8 <= innerHeight;
+        var y = fits ? scrollY + top - navH : (ds.bottom - st.top + navH + 8 <= innerHeight ? scrollY + st.top - navH : scrollY + ds.bottom - innerHeight + 12);
+        scrollTo({ top: y, behavior: noMove ? 'auto' : 'smooth' });
       }
     }
   }
