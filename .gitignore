@@ -1,0 +1,21 @@
+# Kept on this computer only. None of these are used by the live site.
+
+# Project notes and tool settings (private)
+CLAUDE.md
+.claude/
+
+# Old versions, rejected designs, and inspiration
+_archive/
+_tmp/
+New folder/
+compare.html
+design-*.html
+
+# Original, full-size images (the site uses smaller copies)
+photos/
+metre-photos/
+toolbox/source/
+dog.jpg
+
+# Old toolbox tray images, replaced by the .webp versions
+toolbox/slot-*.png
