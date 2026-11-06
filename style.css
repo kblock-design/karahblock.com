@@ -660,3 +660,14 @@ body { line-height: 1.5; }
 /* Thinner phone bezel (her request) */
 .ph { padding: 4px 4px 0; border-radius: 26px 26px 0 0; }
 .ph img { border-radius: 22px 22px 0 0; }
+
+/* Toolbox: her clean cutouts show on hover and focus too, not only when a tool is pulled out.
+   Each cutout is sized to the tool's full height so it never looks smaller than the photo version. */
+.tool .out { inset: auto; top: 0; left: 50%; width: auto; height: 100%; max-width: none; translate: -50% 0; object-fit: fill; }
+.tool:is(:hover, :focus-visible):has(.out) > img:first-child { opacity: 0; }
+.tool:is(:hover, :focus-visible) .out { opacity: 1; }
+/* Match each cutout's angle to its tool in the photo (measured when the trays were built) */
+.tool[data-i="6"] .out { rotate: -10deg; }
+.tool[data-i="3"] .out { rotate: -2.5deg; }
+.tool[data-i="4"] .out { rotate: 2deg; }
+.tool[data-i="1"] .out { rotate: 1deg; }
