@@ -62,3 +62,8 @@ body.rd { font-family: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-seri
 
 /* Fixes after first look */
 .rd #how { padding-bottom: 0; }
+
+/* Toolbox: the box is cut out of its photo (toolbox/box-cut.png), so it sits straight on the band
+   with its own shadow. No photo edge to hide, so no fade mask. */
+.rd .photo { -webkit-mask-image: none; mask-image: none; overflow: visible; }
+.rd .photo img { -webkit-mask-image: linear-gradient(to bottom, #000 84%, transparent 96%); mask-image: linear-gradient(to bottom, #000 84%, transparent 96%); }
