@@ -634,7 +634,7 @@ nav::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; heig
 .hero-sub { margin-top: clamp(24px, 2.8vw, 40px); }
 .work-h { padding-block: var(--gap-section) clamp(32px, 3.6vw, 56px); }
 .cat > div:first-child { padding-block: clamp(28px, 3vw, 44px); }
-.items { padding-top: clamp(28px, 3vw, 44px); padding-bottom: clamp(88px, 10vw, 152px); row-gap: clamp(56px, 6vw, 96px); padding-right: clamp(20px, 6vw, 104px) !important; }
+.items { padding-top: clamp(28px, 3vw, 44px); padding-bottom: clamp(88px, 10vw, 152px); row-gap: clamp(56px, 6vw, 96px); }
 .cap { padding-top: 18px; gap: 8px; }
 #how, #free, #me { padding-block: var(--gap-section); }
 #how .lab, #free h2, #me h2 { margin-bottom: clamp(32px, 4vw, 60px); }
@@ -677,3 +677,86 @@ body { line-height: 1.5; }
   .tshow { grid-template-columns: 92px minmax(0, 1fr); gap: 14px; }
   .slot { height: 170px; }
 }
+
+/* Selected work, simplified (Nov 2026): one two-column grid on the page's main column, one card pattern.
+   Software spans both columns with two cards. Hardware and Apparel sit side by side below it. */
+.work { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(20px, 2.6vw, 40px); row-gap: clamp(56px, 6vw, 88px); }
+.cat { display: block; border-top: 1px solid var(--rule); padding-top: clamp(16px, 1.8vw, 24px); scroll-margin-top: 76px; }
+#software { grid-column: 1 / -1; }
+.cat h3 { position: static; margin-bottom: clamp(20px, 2.2vw, 32px); }
+.items { border-left: 0; padding: 0; grid-template-columns: minmax(0, 1fr); gap: clamp(40px, 5vw, 64px) clamp(20px, 2.6vw, 40px); }
+#software .items { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pic, .pic:has(.ph), .type, .type.ol { aspect-ratio: 4 / 3; background: #e4e1d6; }
+.cap { padding-top: 16px; }
+/* Peak: the stat sits at the bottom left of its tile */
+.type { justify-content: flex-end; padding: clamp(20px, 2.6vw, 36px); }
+.type strong { font-size: var(--t-section); letter-spacing: -.035em; line-height: 1.04; }
+/* Metre: the whole website screenshot, set on the tile like the phone */
+.shot { display: grid; place-items: center; }
+.pic.shot > img { width: 84%; height: auto; object-fit: fill; box-shadow: 0 14px 34px rgba(24, 24, 22, .16); }
+article:hover .pic.shot > img { transform: translateY(-6px); }
+.work { padding-bottom: var(--gap-section); }
+@media (max-width: 640px) {
+  .work, #software .items { grid-template-columns: minmax(0, 1fr); }
+  .items { padding: 0; }
+  .work { row-gap: 48px; }
+}
+
+/* Quieter pass (Nov 2026): one neutral family plus the blue accent. The olive toolbox photo and the
+   blue contact band are the only two colored surfaces, one near the top and one at the end. */
+:root { --rule: rgba(24, 24, 22, .2); --tint: #eae8df; }
+/* How I work: a neutral tint from the paper family, not a third hue */
+#how { background: var(--tint); --rc: rgba(24, 24, 22, .2); }
+.say > div { border-top-color: rgba(24, 24, 22, .2); }
+/* Toolbox: no dividing line, and a shorter band on wide screens so it does not outweigh the work */
+.pane { border-left: 0; }
+.tshow, .detail .usedon { border-top-color: rgba(24, 24, 22, .28); }
+@media (min-width: 1001px) {
+  .stage { width: min(100%, 470px, calc((100vh - 130px) * .794)); margin: clamp(20px, 2.4vw, 36px) auto; }
+  .tgrid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  .pane { grid-template-rows: auto auto auto; align-content: center; padding-left: 0; }
+  .slot { height: clamp(190px, calc(100vh - 420px), 300px); }
+}
+@media (min-width: 1001px) {
+  /* The toolbox content sits on the same column as the rest of the page */
+  .tgrid { max-width: 1280px; margin-inline: auto; padding-inline: clamp(20px, 6vw, 104px); column-gap: clamp(24px, 4vw, 64px); }
+  .pane { padding-right: 0; }
+}
+/* A pulled tool's shadow stays inside the band */
+#toolbox { overflow: clip; }
+
+/* Distill pass (Nov 2026): even spacing between sections, Additional projects on the work grid, a calmer About me */
+/* Two plain sections in a row share one gap, not two */
+#free { padding-bottom: 0; }
+#how { padding-block: clamp(64px, 7.5vw, 112px); }
+#free h2, #me h2, #how .lab { margin-bottom: clamp(24px, 2.8vw, 40px); }
+/* Additional projects: two columns that match Selected work. Name and link on one line, description below. */
+.rows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(20px, 2.6vw, 40px); }
+.rows li { grid-template-columns: minmax(0, 1fr) auto; gap: 6px 18px; padding-block: clamp(16px, 1.8vw, 24px) 0; }
+.rows span { grid-column: 1 / -1; grid-row: 2; max-width: 30em; }
+.rows a, .rows em { padding-block: 0; }
+.rows em { color: var(--ink-2); }
+.rows:hover li:not(:hover) { opacity: 1; }
+/* About me: a smaller photo, and her line at card-title scale so it does not compete with section headings */
+.me-grid { grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: clamp(24px, 3vw, 40px) clamp(28px, 4.6vw, 72px); align-items: center; padding-top: clamp(20px, 2.4vw, 32px); }
+.me-say { font-size: var(--t-cat); letter-spacing: -.03em; line-height: 1.15; max-width: 22em; }
+.me-right { gap: clamp(20px, 2.4vw, 30px); }
+.me-card b { font-size: var(--t-body); font-weight: 500; letter-spacing: -.01em; line-height: 1.3; }
+.me-sky img { width: 72px; }
+.me-icons { border-top: 0; padding-top: 0; gap: clamp(18px, 2.6vw, 36px); }
+.me-icons svg { width: 36px; stroke-width: 1.75; }
+@media (max-width: 640px) {
+  .rows { grid-template-columns: minmax(0, 1fr); }
+  .me-grid { grid-template-columns: minmax(0, 1fr); }
+  .me-grid .me-card { max-width: 220px; }
+}
+.rows { row-gap: 24px; }
+.rows li { padding-top: 8px; }
+.rows a, .rows em { display: inline-block; padding-block: 8px; }
+.rows li { grid-template-rows: 40px auto; align-items: center; }
+.rows span { align-self: start; }
+
+/* Toolbox: the box is cut out of its photo (toolbox/box-cut.png), so it sits straight on the band
+   with its own shadow. No photo edge to hide; only the bottom of the shadow fades. */
+.photo { -webkit-mask-image: none; mask-image: none; overflow: visible; }
+.photo img { -webkit-mask-image: linear-gradient(to bottom, #000 84%, transparent 96%); mask-image: linear-gradient(to bottom, #000 84%, transparent 96%); }
