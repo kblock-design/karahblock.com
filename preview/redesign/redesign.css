@@ -1,6 +1,6 @@
 /* Redesign experiment (Nov 2026). Loaded after style.css, only in this folder.
    Idea: a clean printed page that Karah has marked up with a blue ballpoint pen.
-   One typeface (Bricolage Grotesque). Pen marks only: the circle, the strikes, the underline. No handwriting (her call). */
+   One typeface (Schibsted Grotesk, her pick). Pen marks only: the circle, the strikes, the underline. No handwriting (her call). */
 
 :root {
   --paper: #F8F9F9;   /* cool white, like printer paper */
@@ -16,10 +16,10 @@
   --t-lead: clamp(18px, 1.45vw, 21px);
 }
 
-body.rd { font-family: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif; font-optical-sizing: auto; background: var(--paper); color: var(--ink); }
-.rd :is(h1, h2, h3, h4), .rd .me-say, .rd .rows b, .rd .org { font-stretch: 82%; font-weight: 600; letter-spacing: -.022em !important; }
-.rd .hero h1, .rd #contact h2, .rd .page-head h1 { font-stretch: 78%; font-weight: 650; line-height: .96; }
-.rd .logo { font-stretch: 88%; font-weight: 650; letter-spacing: -.01em; }
+body.rd { font-family: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif; font-optical-sizing: auto; background: var(--paper); color: var(--ink); }
+.rd :is(h1, h2, h3, h4), .rd .me-say, .rd .rows b, .rd .org { font-weight: 600; letter-spacing: -.03em !important; }
+.rd .hero h1, .rd #contact h2, .rd .page-head h1 { line-height: .98; }
+.rd .logo { font-weight: 600; letter-spacing: -.02em; }
 .rd ::selection { background: var(--blue); color: #fff; }
 .rd .pen { stroke: var(--blue); stroke-width: 3; }
 .rd #contact .pen { stroke: #fff; }
