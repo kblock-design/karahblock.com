@@ -1,0 +1,64 @@
+/* Redesign experiment (Nov 2026). Loaded after style.css, only in this folder.
+   Idea: a clean printed page that Karah has marked up with a blue ballpoint pen.
+   One typeface (Bricolage Grotesque). Pen marks only: the circle, the strikes, the underline. No handwriting (her call). */
+
+:root {
+  --paper: #F8F9F9;   /* cool white, like printer paper */
+  --ink: #15181D;
+  --ink-2: #5B626C;   /* graphite */
+  --steel: #E6E9EC;   /* image tiles */
+  --blue: #1D5FA8;    /* the blue of the toolbox in the photo */
+  --rule: rgba(21, 24, 29, .16);
+  --tint: transparent;
+  --t-hero: clamp(44px, 6.6vw, 100px);
+  --t-section: clamp(28px, 3.2vw, 46px);
+  --t-cat: clamp(20px, 1.8vw, 26px);
+  --t-lead: clamp(18px, 1.45vw, 21px);
+}
+
+body.rd { font-family: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif; font-optical-sizing: auto; background: var(--paper); color: var(--ink); }
+.rd :is(h1, h2, h3, h4), .rd .me-say, .rd .rows b, .rd .org { font-stretch: 82%; font-weight: 600; letter-spacing: -.022em !important; }
+.rd .hero h1, .rd #contact h2, .rd .page-head h1 { font-stretch: 78%; font-weight: 650; line-height: .96; }
+.rd .logo { font-stretch: 88%; font-weight: 650; letter-spacing: -.01em; }
+.rd ::selection { background: var(--blue); color: #fff; }
+.rd .pen { stroke: var(--blue); stroke-width: 3; }
+.rd #contact .pen { stroke: #fff; }
+.rd .hero-links .go:first-child:hover { background: #164B86; }
+
+/* Hero: the headline does the work */
+.rd .hero h1 { max-width: 11em; }
+.rd .hero-sub { font-weight: 400; color: var(--ink); max-width: 28em; }
+
+/* Selected work: one project per row, picture left, the result in large type right */
+.rwork { padding-bottom: var(--gap-section); }
+.rgroup { border-top: 1px solid var(--rule); padding-top: clamp(16px, 1.8vw, 24px); scroll-margin-top: 76px; }
+.rgroup + .rgroup { margin-top: clamp(56px, 6.4vw, 96px); }
+.rgroup > h3 { font-size: var(--t-cat); line-height: 1.05; margin-bottom: clamp(22px, 2.4vw, 34px); }
+.rrow { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 4.4vw, 72px); align-items: center; }
+.rrow + .rrow { margin-top: clamp(40px, 4.6vw, 68px); }
+.rtext h4 { font-size: var(--t-section); line-height: 1.04; max-width: 15em; text-wrap: balance; }
+.rd .rtext p { margin-top: 14px; max-width: 30em; font-size: var(--t-lead); line-height: 1.4; color: var(--ink-2); }
+.rtext small { display: block; margin-top: 18px; font-size: var(--t-small); font-weight: 500; }
+.rd .pic, .rd .pic:has(.ph) { background: var(--steel); }
+/* Peak: 37 squares, one per component */
+.pic.sys { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); align-content: center; gap: 3.2%; padding: 11% 13%; }
+.pic.sys i { aspect-ratio: 1; background: #fff; border-radius: 3px; box-shadow: 0 1px 2px rgba(21, 24, 29, .08); }
+
+/* How I work: on the page itself, in the largest type after the hero */
+.rd #how { background: none; padding-block: 0 var(--gap-section); }
+.rd .say h3 { font-size: var(--t-section); }
+.rd .say > div { border-top-color: var(--rule); padding-block: clamp(22px, 2.6vw, 38px); }
+.rd .say > div:last-child { border-bottom: 1px solid var(--rule); }
+.rd .say i { color: var(--ink-2); }
+.rd #how .pen { stroke: var(--blue); }
+
+/* Contact band in toolbox blue */
+.rd #contact { background: var(--blue); }
+
+@media (max-width: 640px) {
+  .rrow { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .rd .me-sky { flex-wrap: wrap; }
+}
+
+/* Fixes after first look */
+.rd #how { padding-bottom: 0; }

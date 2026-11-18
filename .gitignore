@@ -19,3 +19,6 @@ dog.jpg
 
 # Old toolbox tray images, replaced by the .webp versions
 toolbox/slot-*.png
+
+# Redesign experiment (a private copy of the site)
+/redesign/
